@@ -3,7 +3,7 @@ welcome!
 ispresent=1
 isfulltime=2
 totalsalary=0
-emppperhour=20
+emprateperhour=20
 noofworkingday=20
 for((day=1;day<=$noofworkingday;day++))
 do
@@ -16,6 +16,6 @@ do
 		*)
 			emphour=0
 		esac
-	salary=$(($emphour * $empperhour))
+	salary=$(($emphour * $emprateperhour))
 	totalsalary=$(($totalsalary * $salary))
 done
