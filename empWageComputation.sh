@@ -3,15 +3,14 @@ welcome!
 ispresent=1
 isfulltime=2
 wageperhour=20
-randomcheck=$(($RANDOM%2))
-if [ $isfulltime -eq $randomcheck ]
-then
+empcheck=$(($RANDOM%2))
+case $empcheck in
+$isfulltime)
 	wagehour=8
-elif [ $isparttime -eq $randomcheck ]
-then
+$isparttime)
 	wagehour=4
-else
+*)
 	wagehour=0
-fi
+esac
 wage=$(($wagehour * $wageperhour))
 
