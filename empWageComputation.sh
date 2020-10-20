@@ -1,15 +1,17 @@
 welcome!
 #! /bin/bash -x
 ispresent=1
-randomcheck=$(($RANDOM%2))
+isfulltime=2
 wageperhour=20
-fulldayhour=8
-if [ $randomcheck -eq 0 ]
+randomcheck=$(($RANDOM%2))
+if [ $isfulltime -eq $randomcheck ]
 then
-	echo "employee absent"
-	wage=0
+	wagehour=8
+elif [ $isparttime -eq $randomcheck ]
+then
+	wagehour=4
 else
-	echo "employee present"
-	wage=$(($wageperhour * $fulldayhour))
-
+	wagehour=0
 fi
+wage=$(($wagehour * $wageperhour))
+
