@@ -9,7 +9,6 @@ monthwage=0
 totalworkingday=0
 totalemphr=0
 maxhrinmonth=100
-empcheck=$(($RANDOM%2))
 function workhour() {
 localempcheck=$1
 case $empcheck in
@@ -25,6 +24,7 @@ echo $emphr
 while [[ $totalemphr -lt $maxhrinmonth -a $totalworkingday -lt $noofworkingday ]]
 do
 	((totalworkingday++))
+	empcheck=$((RANDOM%2));
 	empcheck="$( workhour $empcheck )"
 	totalemphr=$(( totalemphr+emphour ))
 	dailywage=$(( $emphr * $emprateperhour ))
