@@ -5,17 +5,25 @@ isfulltime=2
 totalsalary=0
 emprateperhour=20
 noofworkingday=20
-for((day=1;day<=$noofworkingday;day++))
+monthwage=0
+totalworkingday=0
+totalemphr=0
+maxhrinmonth=100
+empcheck=$(($RANDOM%2))
+case $empcheck in
+	$isfulltime)
+		emphour=8
+	$isparttime)
+		emphour=4
+	*)
+		emphour=0
+esac
+while [[ $totalemphr -lt $maxhrinmonth -a $totalworkingday -lt $noofworkingday ]]
 do
-	empcheck=$(($RANDOM%2))
-	case $empcheck in
-		$isfulltime)
-			emphour=8
-		$isparttime)
-			emphour=4
-		*)
-			emphour=0
-		esac
-	salary=$(($emphour * $emprateperhour))
-	totalsalary=$(($totalsalary * $salary))
+	((totalworkingday++))
+	totalemphr=$(( totalemphr+emphour ))
+	dailywage=$(( $emphr * $emprateperhour ))
+	monthlywage=$(( monthwage+dailywage ))
 done
+echo dailywage of employee $dailywage
+echo monthwage of employee $monthlywage
